@@ -1,0 +1,46 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0f1218"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="icon.svg">
+<title>TV Guida</title>
+<style>
+:root{--bg:#0f1218;--card:#181d27;--line:#262d3b;--tx:#e8ecf3;--mu:#8b95a8;--ac:#4da3ff;--free:#3ecf8e;--pay:#ffb454;--oth:#8b95a8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,sans-serif;padding-bottom:70px}
+header{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 12px 6px;border-bottom:1px solid var(--line)}
+.row{display:flex;gap:8px;align-items:center}input,select,button{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+input{flex:1;min-width:0}button{cursor:pointer}button.on{background:var(--ac);color:#06121f;border-color:var(--ac)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none}.chips button{white-space:nowrap;padding:5px 11px;border-radius:99px;font-size:13px}
+main{padding:10px 12px}.it{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.it h4{margin:0;font-size:15px}.mu{color:var(--mu);font-size:13px}.tm{font-variant-numeric:tabular-nums;color:var(--ac);font-weight:600;min-width:46px}
+.b{display:inline-block;font-size:11px;padding:1px 7px;border-radius:99px;border:1px solid;margin-right:6px}.b.free{color:var(--free)}.b.pay{color:var(--pay)}.b.other,.b.stream{color:var(--oth)}
+.bar{height:3px;background:var(--line);border-radius:2px;margin:6px 0}.bar i{display:block;height:100%;background:var(--ac);border-radius:2px}
+.ico{background:none;border:0;font-size:18px;padding:2px 6px}nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;border:0;border-radius:0;background:none;padding:12px 4px;color:var(--mu)}nav button.on{color:var(--ac);background:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.card img{width:100%;border-radius:8px;aspect-ratio:2/3;object-fit:cover;background:var(--line)}
+dialog{background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:14px;width:min(560px,94vw);max-height:86vh}dialog::backdrop{background:#000a}
+.ban{background:#3a2a10;border:1px solid var(--pay);border-radius:10px;padding:8px 10px;margin-bottom:10px;font-size:13px}
+label.ck{display:flex;gap:8px;align-items:center;padding:5px 0}a{color:var(--ac)}
+.tl{overflow:auto;max-height:calc(100vh - 300px);border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.tli{position:relative}.tlh{display:flex;position:sticky;top:0;z-index:3;background:var(--card);border-bottom:1px solid var(--line);height:26px}
+.tlh .nm{width:84px;flex:none;position:sticky;left:0;z-index:4;background:var(--card)}.tlh span.hr{flex:none;font-size:11px;color:var(--mu);border-left:1px solid var(--line);padding:5px 4px}
+.tlr{display:flex;height:56px;border-bottom:1px solid var(--line)}.tlr .nm{width:84px;flex:none;position:sticky;left:0;z-index:2;background:var(--card);font-size:12px;font-weight:600;padding:6px;border-right:1px solid var(--line);overflow:hidden}
+.tlt{position:relative;flex:none;height:56px}.blk{position:absolute;top:3px;height:50px;background:#223046;border:1px solid #2f4262;border-radius:8px;padding:3px 6px;overflow:hidden;font-size:12px;line-height:1.25;cursor:pointer}
+.blk b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.blk small{color:var(--mu)}.blk.fv{background:#4a3a14;border-color:var(--pay)}
+.now{position:absolute;top:0;bottom:0;width:2px;background:#ff5d5d;z-index:3;pointer-events:none}
+select{font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+nav button small{font-size:11px}
+.tlr.hl{background:#14304f}.tlr.hl .nm{background:#14304f;color:var(--ac)}.tlr.hl .blk{background:#2c5282;border-color:var(--ac)}.tlr.hl .blk.fv{background:#6b5216}.tlr .nm{cursor:pointer}
+.it.gc{border-left:4px solid var(--gc);background-image:linear-gradient(90deg,var(--gt),transparent 60%)}
+.gb{display:inline-block;font-size:11px;padding:1px 7px;border-radius:99px;border:1px solid var(--gc);color:var(--gc);margin-right:4px}
+.blk.gc{border-left:4px solid var(--gc);background:linear-gradient(var(--gt),var(--gt)),#223046}.tlr.hl .blk.gc{background:linear-gradient(var(--gt),var(--gt)),#2c5282}
+.lg{border:1px solid var(--gc);color:var(--gc);background:var(--gt);border-radius:99px;padding:3px 10px;font-size:12px;cursor:pointer;white-space:nowrap}.lg.on{background:var(--gc);color:#0f1218}
+.blk.fv.gc{background:linear-gradient(var(--gt),var(--gt)),#4a3a14;border-color:var(--pay);border-left-color:var(--gc)}
+.cn{display:inline-block;min-width:22px;text-align:center;background:var(--line);color:var(--tx);border-radius:6px;font-size:11px;padding:0 5px;margin-right:5px;font-weight:600}
+</style></head><body>
+<header>
+ <div class="row"><input id="q" type="search" placeholder="Cerca programma…"><button id="cfg" title="Impostazioni">⚙️</button></div>
+ <div class="chips" id="types"></div>
+</header>
+<main id="m"></main>
+<nav id="nav"></nav>
+<dialog id="dlg"></dialog>
+<script src="app.js?v=v13"></script></body></html>

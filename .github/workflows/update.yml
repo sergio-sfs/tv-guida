@@ -1,0 +1,51 @@
+name: Aggiorna palinsesti
+on:
+  schedule:
+    - cron: '30 3 * * *'
+    - cron: '30 11 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Prepara iptv-org/epg
+        run: |
+          git clone -q --depth 1 https://github.com/iptv-org/epg /tmp/epg
+          cd /tmp/epg && npm install --no-audit --no-fund --loglevel=error
+          mkdir -p /tmp/out
+      - name: Rai
+        continue-on-error: true
+        timeout-minutes: 12
+        working-directory: /tmp/epg
+        run: npm run grab -- --sites=raiplay.it --days=7 --maxConnections=10 --output=/tmp/out/1-rai.xml
+      - name: Mediaset
+        continue-on-error: true
+        timeout-minutes: 12
+        working-directory: /tmp/epg
+        run: npm run grab -- --sites=mediasetinfinity.mediaset.it --days=7 --maxConnections=10 --output=/tmp/out/2-mediaset.xml
+      - name: Sky
+        continue-on-error: true
+        timeout-minutes: 20
+        working-directory: /tmp/epg
+        run: npm run grab -- --sites=guidatv.sky.it --days=7 --maxConnections=10 --output=/tmp/out/3-sky.xml
+      - name: SuperGuidaTV
+        continue-on-error: true
+        timeout-minutes: 20
+        working-directory: /tmp/epg
+        run: npm run grab -- --sites=superguidatv.it --days=7 --maxConnections=10 --output=/tmp/out/4-superguidatv.xml
+      - run: ls -la /tmp/out
+      - run: node scripts/fetch.mjs
+        env:
+          EPG_PASSWORD: ${{ secrets.EPG_PASSWORD }}
+      - name: Salva i dati
+        run: |
+          git config user.name "tv-guida-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A docs/data
+          git diff --cached --quiet || (git commit -m "Aggiornamento palinsesti" && git pull -q --rebase && git push)
