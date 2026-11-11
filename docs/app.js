@@ -3,7 +3,7 @@ const hm=t=>new Date(t).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-dig
 const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const TYPES={all:'Tutti',free:'In chiaro',pay:'A pagamento'}, LBL={free:'chiaro',pay:'pay',other:'altro'};
 const LINKS=[['LBA TV','https://www.legabasket.it'],['Netflix','https://www.netflix.com/it/'],['Prime Video','https://www.primevideo.com'],['Sky Go','https://skygo.sky.it'],['NOW','https://www.nowtv.it'],['DAZN','https://www.dazn.com/it-IT'],['RaiPlay','https://www.raiplay.it'],['Mediaset Infinity','https://www.mediasetinfinity.mediaset.it'],['Disney+','https://www.disneyplus.com'],['Paramount+','https://www.paramountplus.com/it/']];
-const VER='v15';
+const VER='v16';
 const PPM=2.4, NMW=84;
 let S={tab:'now',type:'all',day:0,tday:0,slot:'all',ch:'all',gen:'all',tfav:false,sort:'time',tch:'all',tsort:'num',osort:'chan',legend:false,hl:ls('hl',[]),chs:[],byId:{},progs:[],updated:null,gopts:'',sel:ls('sel',null),favs:ls('favs',[]),rem:ls('rem',[])};
 const ALIAS={'Calcio':'Sport/Calcio','Telegiornale':'Informazione/Notiziario','Talk Show':'Intrattenimento/Talk Show','Magazine':'Mondo e Tendenze/Magazine','Drammatico':'Film/Drammatico','Serie TV':'Intrattenimento/Fiction','Altro/Altro':'Altro','Altri Programmi/Altri Canali':'Altro','Altri Programmi':'Altro'};

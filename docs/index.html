@@ -13,13 +13,13 @@ main{padding:10px 12px}.it{background:var(--card);border:1px solid var(--line);b
 .it h4{margin:0;font-size:15px}.mu{color:var(--mu);font-size:13px}.tm{font-variant-numeric:tabular-nums;color:var(--ac);font-weight:600;min-width:46px}
 .b{display:inline-block;font-size:11px;padding:1px 7px;border-radius:99px;border:1px solid;margin-right:6px}.b.free{color:var(--free)}.b.pay{color:var(--pay)}.b.other,.b.stream{color:var(--oth)}
 .bar{height:3px;background:var(--line);border-radius:2px;margin:6px 0}.bar i{display:block;height:100%;background:var(--ac);border-radius:2px}
-.ico{background:none;border:0;font-size:18px;padding:2px 6px}nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.ico{background:none;border:0;font-size:18px;padding:2px 6px}nav{z-index:20;position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
 nav button{flex:1;border:0;border-radius:0;background:none;padding:12px 4px;color:var(--mu)}nav button.on{color:var(--ac);background:none}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}.card img{width:100%;border-radius:8px;aspect-ratio:2/3;object-fit:cover;background:var(--line)}
 dialog{background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:14px;width:min(560px,94vw);max-height:86vh}dialog::backdrop{background:#000a}
 .ban{background:#3a2a10;border:1px solid var(--pay);border-radius:10px;padding:8px 10px;margin-bottom:10px;font-size:13px}
 label.ck{display:flex;gap:8px;align-items:center;padding:5px 0}a{color:var(--ac)}
-.tl{overflow:auto;max-height:calc(100vh - 300px);border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.tl{overflow:auto;max-height:calc(100vh - 200px);max-height:calc(100dvh - 200px);min-height:260px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
 .tli{position:relative}.tlh{display:flex;position:sticky;top:0;z-index:3;background:var(--card);border-bottom:1px solid var(--line);height:26px}
 .tlh .nm{width:84px;flex:none;position:sticky;left:0;z-index:4;background:var(--card)}.tlh span.hr{flex:none;font-size:11px;color:var(--mu);border-left:1px solid var(--line);padding:5px 4px}
 .tlr{display:flex;height:56px;border-bottom:1px solid var(--line)}.tlr .nm{width:84px;flex:none;position:sticky;left:0;z-index:2;background:var(--card);font-size:12px;font-weight:600;padding:6px;border-right:1px solid var(--line);overflow:hidden}
@@ -35,6 +35,7 @@ nav button small{font-size:11px}
 .lg{border:1px solid var(--gc);color:var(--gc);background:var(--gt);border-radius:99px;padding:3px 10px;font-size:12px;cursor:pointer;white-space:nowrap}.lg.on{background:var(--gc);color:#0f1218}
 .blk.fv.gc{background:linear-gradient(var(--gt),var(--gt)),#4a3a14;border-color:var(--pay);border-left-color:var(--gc)}
 .cn{display:inline-block;min-width:22px;text-align:center;background:var(--line);color:var(--tx);border-radius:6px;font-size:11px;padding:0 5px;margin-right:5px;font-weight:600}
+body{padding-bottom:90px}
 </style></head><body>
 <header>
  <div class="row"><input id="q" type="search" placeholder="Cerca programma…"><button id="cfg" title="Impostazioni">⚙️</button></div>
@@ -43,4 +44,4 @@ nav button small{font-size:11px}
 <main id="m"></main>
 <nav id="nav"></nav>
 <dialog id="dlg"></dialog>
-<script src="app.js?v=v15"></script></body></html>
+<script src="app.js?v=v16"></script></body></html>
