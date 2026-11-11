@@ -3,7 +3,7 @@ const hm=t=>new Date(t).toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-dig
 const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const TYPES={all:'Tutti',free:'In chiaro',pay:'A pagamento'}, LBL={free:'chiaro',pay:'pay',other:'altro'};
 const LINKS=[['LBA TV','https://www.legabasket.it'],['Netflix','https://www.netflix.com/it/'],['Prime Video','https://www.primevideo.com'],['Sky Go','https://skygo.sky.it'],['NOW','https://www.nowtv.it'],['DAZN','https://www.dazn.com/it-IT'],['RaiPlay','https://www.raiplay.it'],['Mediaset Infinity','https://www.mediasetinfinity.mediaset.it'],['Disney+','https://www.disneyplus.com'],['Paramount+','https://www.paramountplus.com/it/']];
-const VER='v14';
+const VER='v15';
 const PPM=2.4, NMW=84;
 let S={tab:'now',type:'all',day:0,tday:0,slot:'all',ch:'all',gen:'all',tfav:false,sort:'time',tch:'all',tsort:'num',osort:'chan',legend:false,hl:ls('hl',[]),chs:[],byId:{},progs:[],updated:null,gopts:'',sel:ls('sel',null),favs:ls('favs',[]),rem:ls('rem',[])};
 const ALIAS={'Calcio':'Sport/Calcio','Telegiornale':'Informazione/Notiziario','Talk Show':'Intrattenimento/Talk Show','Magazine':'Mondo e Tendenze/Magazine','Drammatico':'Film/Drammatico','Serie TV':'Intrattenimento/Fiction','Altro/Altro':'Altro','Altri Programmi/Altri Canali':'Altro','Altri Programmi':'Altro'};
@@ -88,7 +88,7 @@ function render(){const q=$('#q').value.trim().toLowerCase(),now=Date.now();let 
     ps.sort(sorter());h+=ps.slice(0,300).map(p=>row(p,wk||S.sort!=='time')).join('')||'<p class="mu">Nessun programma.</p>';if(ps.length>300)h+='<p class="mu">Mostrati i primi 300: restringi i filtri.</p>'}
   else if(S.tab==='tl'){h+=timeline(q)}
   else if(S.tab==='fav'){h+='<p class="mu">Titoli con ⭐ nei prossimi giorni. Per vederli in griglia: Timeline → Solo preferiti.</p>';
-    h+=`<div class="row" style="margin:6px 0 8px">${genSel()}<button data-leg="1" class="${S.legend?'on':''}">🎨 Colori</button></div>${legend()}`+sortSel()+S.progs.filter(p=>p.e>now&&chOk(p.c)&&favP(p)&&genOk(p)&&(!q||qm(p,q))).sort(sorter()).slice(0,200).map(p=>row(p,true)).join('')||'<p class="mu">Nessun preferito in programma. Tocca ☆ su un programma.</p>'}
+    h+=`<div class="row" style="margin:6px 0 8px">${genSel()}</div>`+sortSel()+S.progs.filter(p=>p.e>now&&chOk(p.c)&&favP(p)&&genOk(p)&&(!q||qm(p,q))).sort(sorter()).slice(0,200).map(p=>row(p,true)).join('')||'<p class="mu">Nessun preferito in programma. Tocca ☆ su un programma.</p>'}
   else{h+=`<p class="mu">Piattaforme e canali a pagamento: apri direttamente il servizio.</p><div class="chips" style="flex-wrap:wrap">${LINKS.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener"><button>${n} ↗</button></a>`).join('')}</div>`}
   $('#m').innerHTML=(h||'<p class="mu">Nessun risultato.</p>')+`<p class="mu" style="text-align:center;margin-top:14px">Versione ${VER} · dati del ${S.updated?new Date(S.updated).toLocaleString('it-IT'):'—'}</p>`;
   if(S.tab==='tl'&&$('#tl')){const a=dayStart(S.tday),t=a<=now&&now<a+864e5?now-50*6e4:a+18*36e5;$('#tl').scrollLeft=Math.max((t-a)/6e4*PPM,0)}}
